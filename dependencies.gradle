@@ -22,7 +22,8 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin"
+        kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+        threeTenABP: "com.jakewharton.threetenabp:threetenabp:$versions.threeTenABP",
 ]
 
 ext.testLibraries = [
