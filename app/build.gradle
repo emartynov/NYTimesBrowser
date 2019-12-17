@@ -23,6 +23,17 @@ android {
         }
     }
 
+    lintOptions {
+        abortOnError true
+        warningsAsErrors true
+
+        // Also check all other modules (should be faster and more accurate than linting each module individually).
+        checkDependencies true
+
+        // Enable output to the console so we can quickly spot new issues from the CI logs.
+        textReport true
+        textOutput 'stdout'
+    }
 }
 
 dependencies {
@@ -33,8 +44,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.1.0'
 
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-    testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
