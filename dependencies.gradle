@@ -10,6 +10,12 @@ ext.versions = [
 
         androidGradlePlugin: '3.5.3',
 
+        moshi              : '1.9.2',
+        retrofit           : '2.6.3',
+        rxJava             : '2.2.16',
+        rxKotlin           : '2.4.0',
+        rxAndroid          : '2.1.1',
+        rxLint             : '1.7.5',
         threeTenABP        : '1.2.1',
 
         junit              : '5.5.2',
@@ -22,8 +28,16 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
-        threeTenABP: "com.jakewharton.threetenabp:threetenabp:$versions.threeTenABP",
+        kotlinStdlib  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+        moshi         : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
+        moshiCodegen  : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
+        moshiConverter: "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+        retrofit      : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        rxJava        : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+        rxKotlin      : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
+        rxAndroid     : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+        rxLint        : "nl.littlerobots.rxlint:rxlint:$versions.rxLint",
+        threeTenABP   : "com.jakewharton.threetenabp:threetenabp:$versions.threeTenABP",
 ]
 
 ext.testLibraries = [

@@ -1,1 +1,14 @@
 apply from: "$rootDir/library.gradle"
+
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation project(':common-article')
+
+    implementation libraries.moshi
+    implementation libraries.retrofit
+    implementation libraries.rxJava
+    implementation libraries.rxLint
+
+    kapt libraries.moshiCodegen
+}
