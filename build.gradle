@@ -4,7 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
 
     dependencies {
@@ -21,6 +21,19 @@ allprojects {
         google()
         jcenter()
     }
+
+    tasks.withType(JavaCompile).configureEach {
+        // treat all warnings as errors
+        options.compilerArgs += '-Werror'
+    }
+
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+        kotlinOptions {
+            // treat all warnings as errors
+            kotlinOptions.allWarningsAsErrors = true
+        }
+    }
+
 }
 
 task clean(type: Delete) {
