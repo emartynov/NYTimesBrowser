@@ -1,10 +1,1 @@
-apply plugin: 'java-library'
-apply plugin: 'kotlin'
-
-dependencies {
-    //noinspection DifferentStdlibGradleVersion
-    implementation libraries.kotlinStdlib
-}
-
-sourceCompatibility = '8'
-targetCompatibility = '8'
+apply from: "$rootDir/library.gradle"

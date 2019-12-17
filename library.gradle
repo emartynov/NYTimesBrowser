@@ -1,0 +1,15 @@
+apply from: "$rootDir/tests.gradle"
+
+apply plugin: 'kotlin'
+
+dependencies {
+    //noinspection DifferentStdlibGradleVersion
+    implementation libraries.kotlinStdlib
+}
+
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-XXLanguage:+InlineClasses"]
+        jvmTarget = '1.8'
+    }
+}

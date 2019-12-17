@@ -1,0 +1,10 @@
+apply plugin: 'java-library'
+apply from: "$rootDir/dependencies.gradle"
+
+dependencies {
+    testImplementation testLibraries.junitJupiterApi
+    testImplementation testLibraries.junitJupiterParams
+    testRuntimeOnly testLibraries.junitJupiterEngine
+
+    testImplementation testLibraries.assertJ
+}
