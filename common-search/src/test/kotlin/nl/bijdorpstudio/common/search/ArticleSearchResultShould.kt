@@ -33,9 +33,9 @@ private val JSON = """
 class ArticleSearchResultShould {
     @Test
     fun `Parse json correctly`() {
-        val adapter = Moshi.Builder().build().adapter(ArticleSearchResult::class.java)
+        val adapter = Moshi.Builder().build().adapter(ArticleSearchResultDTO::class.java)
 
-        val result = adapter.fromJson(JSON) as ArticleSearchResult
+        val result = adapter.fromJson(JSON) as ArticleSearchResultDTO
 
         assertThat(result.response.documents).hasSize(1)
         val articleDTO = result.response.documents[0]
