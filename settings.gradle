@@ -1,3 +1,4 @@
 rootProject.name='NYTimesBrowser'
 
 include ':app'
+include ':common-article'
