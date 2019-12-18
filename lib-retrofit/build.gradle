@@ -4,4 +4,6 @@ dependencies {
     implementation libraries.moshiConverter
     implementation libraries.retrofit
     implementation libraries.retrofitRxJavaAdapter
+
+    implementation libraries.retrofitLogInterceptor
 }

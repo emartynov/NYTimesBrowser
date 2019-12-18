@@ -15,6 +15,7 @@ ext.versions = [
         androidXRecycleView    : '1.1.0',
         moshi                  : '1.9.2',
         retrofit               : '2.6.3',
+        retrofitLogInterceptor : '3.8.0', //todo OkHttp
         rxJava                 : '2.2.16',
         rxKotlin               : '2.4.0',
         rxAndroid              : '2.1.1',
@@ -41,7 +42,8 @@ ext.libraries = [
         moshiCodegen            : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
         moshiConverter          : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
         retrofit                : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-        retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit",
+        retrofitLogInterceptor  : "com.squareup.okhttp3:logging-interceptor:$versions.retrofitLogInterceptor",
+        retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
         rxJava                  : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
         rxKotlin                : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
         rxAndroid               : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",

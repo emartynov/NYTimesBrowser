@@ -10,6 +10,7 @@ dependencies {
     implementation libraries.androidXRecyclerView
 
     implementation libraries.kotlinStdlib
+    implementation libraries.retrofit
     implementation libraries.rxAndroid
     implementation libraries.rxKotlin
     implementation libraries.threeTenABP

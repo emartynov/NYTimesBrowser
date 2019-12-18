@@ -35,3 +35,9 @@ Url - path for some remote resource
 * Domain modules have copy constructor that allows private data change
 * No tests for interceptor (too much mocking for the late night)
 * No test for retrofit setup (I probably can but should it be unit test)
+
+# Unfinished
+* No pagination
+* No search
+* No detail
+* No share 
