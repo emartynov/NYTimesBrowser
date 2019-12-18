@@ -1,27 +1,30 @@
 ext.versions = [
-        code               : 1,
-        name               : '1.0',
-        minSdk             : 23,
-        targetSdk          : 29,
-        compileSdk         : 29,
-        buildTools         : '29.0.2',
+        code                   : 1,
+        name                   : '1.0',
+        minSdk                 : 23,
+        targetSdk              : 29,
+        compileSdk             : 29,
+        buildTools             : '29.0.2',
 
-        kotlin             : '1.3.61',
+        kotlin                 : '1.3.61',
 
-        androidGradlePlugin: '3.5.3',
+        androidGradlePlugin    : '3.5.3',
 
-        moshi              : '1.9.2',
-        retrofit           : '2.6.3',
-        rxJava             : '2.2.16',
-        rxKotlin           : '2.4.0',
-        rxAndroid          : '2.1.1',
-        rxLint             : '1.7.5',
-        threeTenABP        : '1.2.1',
+        androidX               : '1.1.0',
+        androidXConstrintLayout: '1.1.3',
+        androidXRecycleView    : '1.1.0',
+        moshi                  : '1.9.2',
+        retrofit               : '2.6.3',
+        rxJava                 : '2.2.16',
+        rxKotlin               : '2.4.0',
+        rxAndroid              : '2.1.1',
+        rxLint                 : '1.7.5',
+        threeTenABP            : '1.2.1',
 
-        assertJ            : '3.14.0',
-        junit              : '5.5.2',
-        mockito            : '3.2.4',
-        mockitoKotlin      : '2.1.0',
+        assertJ                : '3.14.0',
+        junit                  : '5.5.2',
+        mockito                : '3.2.4',
+        mockitoKotlin          : '2.1.0',
 ]
 
 ext.gradlePlugins = [
@@ -30,17 +33,20 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        kotlinStdlib         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
-        moshi                : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
-        moshiCodegen         : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
-        moshiConverter       : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
-        retrofit             : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-        retrofitRxJavaAdapter: "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit",
-        rxJava               : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
-        rxKotlin             : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
-        rxAndroid            : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
-        rxLint               : "nl.littlerobots.rxlint:rxlint:$versions.rxLint",
-        threeTenABP          : "com.jakewharton.threetenabp:threetenabp:$versions.threeTenABP",
+        appCompat               : "androidx.appcompat:appcompat:$versions.androidX",
+        androidXConstraintLayout: "androidx.constraintlayout:constraintlayout:$versions.androidXConstrintLayout",
+        androidXRecyclerView    : "androidx.recyclerview:recyclerview:$versions.androidXRecycleView",
+        kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+        moshi                   : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
+        moshiCodegen            : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
+        moshiConverter          : "com.squareup.retrofit2:converter-moshi:$versions.retrofit",
+        retrofit                : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        retrofitRxJavaAdapter   : "com.squareup.retrofit2:adapter-rxjava:$versions.retrofit",
+        rxJava                  : "io.reactivex.rxjava2:rxjava:$versions.rxJava",
+        rxKotlin                : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
+        rxAndroid               : "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid",
+        rxLint                  : "nl.littlerobots.rxlint:rxlint:$versions.rxLint",
+        threeTenABP             : "com.jakewharton.threetenabp:threetenabp:$versions.threeTenABP",
 ]
 
 ext.testLibraries = [
