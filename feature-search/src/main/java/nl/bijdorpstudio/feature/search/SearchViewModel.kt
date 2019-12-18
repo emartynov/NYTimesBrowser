@@ -21,7 +21,8 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = { list ->
-                    list.map { ArticleListFlexItem(it) }
+                    val items = list.map { ArticleListFlexItem(it) }
+                    mutableContentData.value = Content.Result(items)
                 },
                 onError = {
                     mutableContentData.value = Content.Error
