@@ -3,8 +3,11 @@ package nl.bijdorpstudio.common.search
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import nl.bijdorpstudio.common.article.Article
+import nl.bijdorpstudio.common.article.ID
 import nl.bijdorpstudio.common.article.NonEmptyString
+import nl.bijdorpstudio.common.article.Url
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @JsonClass(generateAdapter = true)
 internal data class ArticleSearchResultDTO(
@@ -36,5 +39,16 @@ internal data class MultimediaDTO(
     val url: String
 )
 
-internal fun ArticleDTO.toDomain(): Article =
-    Article(NonEmptyString.of("test")!!, LocalDateTime.now())
+// all values should be in json
+internal fun ArticleDTO.toDomain(): Article {
+    val slideImageMultimedia = multimedia.find { it.type == "image" && it.subtype == "slide" }
+    return Article(
+        id = ID.of(this.id)!!,
+        title = NonEmptyString.of(headline.name)!!,
+        date = LocalDateTime.parse(
+            date,
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
+        ),
+        imageUrl = Url.of(slideImageMultimedia!!.url)!!
+    )
+}
