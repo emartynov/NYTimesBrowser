@@ -37,6 +37,10 @@ android {
 }
 
 dependencies {
+    implementation project(':common-article')
+    implementation project(':common-article-search')
+    implementation project(':lib-retrofit')
+
     implementation libraries.kotlinStdlib
     implementation libraries.threeTenABP
 
