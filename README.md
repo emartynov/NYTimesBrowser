@@ -16,6 +16,7 @@ Url - path for some remote resource
 # Modules
 * `common-article` - common library to handle classes and functionality around articles
 * `common-article-search` - network library to search article 
+* `lib-retrofit` - network library to setup general code fr networking 
 
 # Dependencies
 * Use java8 source and target level
@@ -32,3 +33,5 @@ Url - path for some remote resource
 
 # Known issues
 * Domain modules have copy constructor that allows private data change
+* No tests for interceptor (too much mocking for the late night)
+* No test for retrofit setup (I probably can but should it be unit test)
