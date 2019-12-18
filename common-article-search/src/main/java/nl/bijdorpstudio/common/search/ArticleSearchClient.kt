@@ -8,7 +8,7 @@ interface ArticleSearchClient {
     fun searchArticle(): Single<List<Article>>
 }
 
-internal class ArticleSearchClientImpl(private val retrofit: Retrofit) : ArticleSearchClient {
+class ArticleSearchClientImpl(private val retrofit: Retrofit) : ArticleSearchClient {
     override fun searchArticle(): Single<List<Article>> {
         return retrofit.create(ArticleSearch::class.java)
             .searchArticles()
