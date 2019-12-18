@@ -3,6 +3,7 @@ package nl.bijdorpstudio.common.search
 import com.squareup.moshi.Moshi
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import java.time.LocalDateTime
 
 private val JSON = """
     {
@@ -48,5 +49,28 @@ class ArticleSearchResultShould {
         assertThat(multimedia.subtype).isEqualTo("slide")
         assertThat(multimedia.url)
             .isEqualTo("images/2019/12/18/dining/17Romanrex3/merlin_162383772_d1e931a2-acf1-402a-ba48-77c3b8b0004a-slide.jpg")
+    }
+
+    @Test
+    fun `Correctly convert to domain`() {
+        val dto = ArticleDTO(
+            id = "some id",
+            date = "2019-12-18T00:00:00+0000",
+            headline = HeadlineDTO("Author"),
+            multimedia = listOf(
+                MultimediaDTO(
+                    type = "image",
+                    subtype = "slide",
+                    url = "images/2019/12/18/slide.jpg"
+                )
+            )
+        )
+
+        val article = dto.toDomain()
+
+        assertThat(article.title.value).isEqualTo(dto.headline.name)
+        assertThat(article.date).isEqualTo(LocalDateTime.of(2019, 12, 18, 0, 0, 0))
+        assertThat(article.id.value.value).isEqualTo("some id")
+        assertThat(article.imageUrl.value.value).isEqualTo("images/2019/12/18/slide.jpg")
     }
 }

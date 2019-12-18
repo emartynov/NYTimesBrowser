@@ -11,7 +11,11 @@ class UrlShould {
 
     @Test
     fun `Return value for non empty string`() {
-        assertThat(Url.of("test")!!.value.value).isEqualTo("test")
+        assertThat(Url.of("path/to/some.png")!!.value.value).isEqualTo("path/to/some.png")
     }
 
+    @Test
+    fun `Return null if can not parse url`() {
+        assertThat(Url.of("path\\d")).isNull()
+    }
 }

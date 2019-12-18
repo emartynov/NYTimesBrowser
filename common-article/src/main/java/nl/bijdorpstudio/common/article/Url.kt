@@ -1,12 +1,24 @@
 package nl.bijdorpstudio.common.article
 
+import java.net.URI
+
 class Url private constructor(val value: NonEmptyString) {
 
     companion object {
         fun of(value: String): Url? {
-            val nonEmptyString = NonEmptyString.of(value)
+            return try {
+                val nonEmptyString = NonEmptyString.of(value)
 
-            return if (nonEmptyString == null) null else Url(nonEmptyString)
+                if (nonEmptyString == null) {
+                    null
+                } else {
+                    // check parsing
+                    URI.create("http://google.com/$value")
+                    Url(nonEmptyString)
+                }
+            } catch (e: Exception) {
+                null
+            }
         }
     }
 }
