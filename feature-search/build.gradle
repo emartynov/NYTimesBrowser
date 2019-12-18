@@ -5,12 +5,14 @@ dependencies {
     implementation project(':common-article-search')
     implementation project(':lib-retrofit')
 
-    implementation libraries.kotlinStdlib
-    implementation libraries.threeTenABP
-
     implementation libraries.appCompat
     implementation libraries.androidXConstraintLayout
     implementation libraries.androidXRecyclerView
+
+    implementation libraries.kotlinStdlib
+    implementation libraries.rxAndroid
+    implementation libraries.rxKotlin
+    implementation libraries.threeTenABP
 }
 
 

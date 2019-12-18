@@ -56,13 +56,13 @@ open class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
         val type: Int
     ) {
 
-        fun onBind(@Suppress("UNUSED_PARAMETER") viewGroup: ViewGroup) {
+        open fun onBind(@Suppress("UNUSED_PARAMETER") viewGroup: ViewGroup) {
             // Override to implement.
         }
 
-        fun isItemTheSame(that: Item): Boolean = type == that.type
+        open fun isItemTheSame(that: Item): Boolean = type == that.type
 
-        fun isContentTheSame(that: Item): Boolean = isItemTheSame(that)
+        open fun isContentTheSame(that: Item): Boolean = isItemTheSame(that)
     }
 
     private fun onItemsChanged(oldItems: List<Item>, newItems: List<Item>) {
