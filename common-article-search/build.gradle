@@ -9,6 +9,7 @@ dependencies {
     implementation libraries.retrofit
     implementation libraries.rxJava
     implementation libraries.rxLint
+    implementation libraries.threeTenABP
 
     kapt libraries.moshiCodegen
 }

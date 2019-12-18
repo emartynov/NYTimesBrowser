@@ -42,7 +42,7 @@ class ArticleSearchResultShould {
         val articleDTO = result.response.documents[0]
         assertThat(articleDTO.id).isEqualTo("nyt://recipe/4bfb1898-5152-5f6b-991b-6d30cf764b96")
         assertThat(articleDTO.date).isEqualTo("2019-12-18T00:00:00+0000")
-        assertThat(articleDTO.headline.name).isEqualTo("Golden Ginger Cake")
+        assertThat(articleDTO.headline.main).isEqualTo("Golden Ginger Cake")
         assertThat(articleDTO.multimedia).hasSize(1)
         val multimedia = articleDTO.multimedia[0]
         assertThat(multimedia.type).isEqualTo("image")
@@ -68,9 +68,9 @@ class ArticleSearchResultShould {
 
         val article = dto.toDomain()
 
-        assertThat(article.title.value).isEqualTo(dto.headline.name)
+        assertThat(article.title.value).isEqualTo(dto.headline.main)
         assertThat(article.date).isEqualTo(LocalDateTime.of(2019, 12, 18, 0, 0, 0))
         assertThat(article.id.value.value).isEqualTo("some id")
-        assertThat(article.imageUrl.value.value).isEqualTo("images/2019/12/18/slide.jpg")
+        assertThat(article.imageUrl!!.value.value).isEqualTo("images/2019/12/18/slide.jpg")
     }
 }
