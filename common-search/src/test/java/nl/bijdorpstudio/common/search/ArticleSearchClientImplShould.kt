@@ -2,6 +2,7 @@ package nl.bijdorpstudio.common.search
 
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.whenever
+import io.reactivex.Single
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -23,10 +24,25 @@ class ArticleSearchClientImplShould {
 
     @Test
     fun `Correctly convert dto to data`() {
+        val dto = ArticleDTO(
+            id = "some id",
+            date = "2019-12-18T00:00:00+0000",
+            headline = HeadlineDTO("Author"),
+            multimedia = listOf(
+                MultimediaDTO(
+                    type = "image",
+                    subtype = "slide",
+                    url = "images/2019/12/18/slide.jpg"
+                )
+            )
+        )
         whenever(retrofitMock.create(ArticleSearch::class.java)) doReturn searchMock
+        val articleSearchResultDTO = ArticleSearchResultDTO(ArticleSearchResponseDTO(listOf(dto)))
+        whenever(searchMock.searchArticles()) doReturn Single.just(articleSearchResultDTO)
 
-        val article = client.searchArticle().blockingGet()
+        val articles = client.searchArticle().blockingGet()
 
-        assertThat(article).isNotNull()
+        assertThat(articles).hasSize(1)
+        assertThat(articles[0]).isEqualTo(dto.toDomain())
     }
 }

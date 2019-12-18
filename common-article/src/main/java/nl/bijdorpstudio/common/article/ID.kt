@@ -1,6 +1,7 @@
 package nl.bijdorpstudio.common.article
 
-class ID private constructor(val value: NonEmptyString) {
+@Suppress("DataClassPrivateConstructor")
+data class ID private constructor(val value: NonEmptyString) {
 
     companion object {
         fun of(value: String): ID? {

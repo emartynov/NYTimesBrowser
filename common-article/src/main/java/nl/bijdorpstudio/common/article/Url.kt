@@ -2,7 +2,8 @@ package nl.bijdorpstudio.common.article
 
 import java.net.URI
 
-class Url private constructor(val value: NonEmptyString) {
+@Suppress("DataClassPrivateConstructor")
+data class Url private constructor(val value: NonEmptyString) {
 
     companion object {
         fun of(value: String): Url? {
