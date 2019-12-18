@@ -6,10 +6,3 @@ dependencies {
     //noinspection DifferentStdlibGradleVersion
     implementation libraries.kotlinStdlib
 }
-
-compileKotlin {
-    kotlinOptions {
-        freeCompilerArgs = ["-XXLanguage:+InlineClasses"]
-        jvmTarget = '1.8'
-    }
-}

@@ -1,0 +1,50 @@
+apply from: "$rootDir/dependencies.gradle"
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+        versionCode versions.code
+        versionName versions.name
+
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    //noinspection DifferentStdlibGradleVersion
+    implementation libraries.kotlinStdlib
+
+    testImplementation testLibraries.junitJupiterApi
+    testImplementation testLibraries.junitJupiterParams
+    testRuntimeOnly testLibraries.junitJupiterEngine
+
+    testImplementation testLibraries.assertJ
+
+    testImplementation testLibraries.assertJ
+    testImplementation testLibraries.assertJ
+    testImplementation testLibraries.assertJ
+    testImplementation testLibraries.assertJ
+
+    testImplementation testLibraries.mockitoCore
+    testImplementation testLibraries.mockitoExtension
+    testImplementation testLibraries.mockitoKotlin
+}
