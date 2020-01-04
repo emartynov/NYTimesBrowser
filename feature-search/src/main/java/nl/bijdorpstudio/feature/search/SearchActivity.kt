@@ -8,12 +8,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
+import nl.bijdorpstudio.common.data.Url
 import nl.bijdorpstudio.common.search.ArticleSearchClientImpl
 import nl.bijdorpstudio.feature.search.flex.FlexRecyclerView
 import nl.bijdorpstudio.lib.retrofit.ApiKey
 import nl.bijdorpstudio.lib.retrofit.ApiKeyAppendInterceptor
 import nl.bijdorpstudio.lib.retrofit.RetrofitProvider
-import java.net.URL
 
 class SearchActivity : AppCompatActivity() {
 
@@ -60,8 +60,8 @@ class SearchActivity : AppCompatActivity() {
 //TODO: DI
 internal class SearchViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        val apiKey = ApiKey.of("***REMOVED***") as ApiKey
-        val baseUrl = URL("https://api.nytimes.com/")
+        val apiKey = ApiKey.of("***REMOVED***")!!
+        val baseUrl = Url.of("https://api.nytimes.com/")!!
         val provider = RetrofitProvider(ApiKeyAppendInterceptor(apiKey))
         val retrofit = provider.createRetrofit(baseUrl, BuildConfig.DEBUG)
         @Suppress("UNCHECKED_CAST")

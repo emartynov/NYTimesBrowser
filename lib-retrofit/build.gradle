@@ -1,6 +1,8 @@
 apply from: "$rootDir/library.gradle"
 
 dependencies {
+    implementation project(':common-data')
+
     implementation libraries.moshiConverter
     implementation libraries.retrofit
     implementation libraries.retrofitRxJavaAdapter
