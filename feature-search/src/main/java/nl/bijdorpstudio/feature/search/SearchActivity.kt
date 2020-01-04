@@ -8,7 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
-import androidx.recyclerview.widget.LinearLayoutManager
 import nl.bijdorpstudio.common.search.ArticleSearchClientImpl
 import nl.bijdorpstudio.feature.search.flex.FlexRecyclerView
 import nl.bijdorpstudio.lib.retrofit.ApiKey
@@ -23,7 +22,6 @@ class SearchActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val recyclerView = findViewById<FlexRecyclerView>(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val model = ViewModelProvider(
             this as ViewModelStoreOwner,

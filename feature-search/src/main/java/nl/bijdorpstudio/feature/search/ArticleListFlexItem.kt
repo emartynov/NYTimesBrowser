@@ -6,7 +6,7 @@ import nl.bijdorpstudio.common.article.Article
 import nl.bijdorpstudio.feature.search.flex.FlexAdapter
 
 class ArticleListFlexItem(private val article: Article) :
-    FlexAdapter.Item(R.layout.article_list_item, 1) {
+    FlexAdapter.Item(R.layout.article_list_item) {
 
     override fun onBind(viewGroup: ViewGroup) {
         super.onBind(viewGroup)
@@ -18,5 +18,4 @@ class ArticleListFlexItem(private val article: Article) :
     override fun isItemTheSame(that: FlexAdapter.Item): Boolean {
         return super.isItemTheSame(that) && article == (that as ArticleListFlexItem).article
     }
-
 }

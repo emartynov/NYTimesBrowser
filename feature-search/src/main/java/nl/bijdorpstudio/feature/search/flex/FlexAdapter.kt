@@ -36,12 +36,12 @@ open class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
 
     override fun getItemCount() = items.size
 
-    override fun getItemViewType(position: Int) = items[position].type
+    override fun getItemViewType(position: Int) = items[position].layout
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlexViewHolder {
-        val item = items.first { it.type == viewType }
+        val item = items.first { it.layout == viewType }
         val view = parent.inflate(item.layout)
-        return FlexViewHolder(item.type, view)
+        return FlexViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: FlexViewHolder, position: Int) {
@@ -49,24 +49,24 @@ open class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
         item.onBind(holder.itemView as ViewGroup)
     }
 
-    class FlexViewHolder(val type: Int, view: View) : RecyclerView.ViewHolder(view)
+    class FlexViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
-    abstract class Item(
-        @get:LayoutRes val layout: Int,
-        val type: Int
+    open class Item(
+        @get:LayoutRes val layout: Int
     ) {
 
         open fun onBind(@Suppress("UNUSED_PARAMETER") viewGroup: ViewGroup) {
             // Override to implement.
         }
 
-        open fun isItemTheSame(that: Item): Boolean = type == that.type
+        open fun isItemTheSame(that: Item): Boolean = layout == that.layout
 
         open fun isContentTheSame(that: Item): Boolean = isItemTheSame(that)
     }
 
     private fun onItemsChanged(oldItems: List<Item>, newItems: List<Item>) {
-        DiffUtil.calculateDiff(FlexDiffUtilCallback(oldItems, newItems)).dispatchUpdatesTo(this)
+        DiffUtil.calculateDiff(FlexDiffUtilCallback(oldItems, newItems))
+            .dispatchUpdatesTo(this)
     }
 
     private fun ViewGroup.inflate(layout: Int): View =
