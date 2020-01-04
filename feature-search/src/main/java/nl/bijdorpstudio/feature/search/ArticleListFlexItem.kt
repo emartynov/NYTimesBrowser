@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import nl.bijdorpstudio.common.article.Article
-import nl.bijdorpstudio.feature.search.flex.FlexAdapter
+import nl.bijdorpstudio.lib.flex.FlexAdapter
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 

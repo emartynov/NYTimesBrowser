@@ -1,4 +1,4 @@
-package nl.bijdorpstudio.feature.search.flex
+package nl.bijdorpstudio.lib.flex
 
 import androidx.recyclerview.widget.DiffUtil
 

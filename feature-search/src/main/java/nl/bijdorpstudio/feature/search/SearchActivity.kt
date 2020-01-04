@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import nl.bijdorpstudio.common.data.Url
 import nl.bijdorpstudio.common.search.ArticleSearchClientImpl
-import nl.bijdorpstudio.feature.search.flex.FlexRecyclerView
+import nl.bijdorpstudio.lib.flex.FlexRecyclerView
 import nl.bijdorpstudio.lib.retrofit.ApiKey
 import nl.bijdorpstudio.lib.retrofit.ApiKeyAppendInterceptor
 import nl.bijdorpstudio.lib.retrofit.RetrofitProvider

@@ -7,7 +7,6 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import nl.bijdorpstudio.common.search.ArticleSearchClient
-import nl.bijdorpstudio.feature.search.flex.FlexAdapter
 
 // TODO: Tests
 class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewModel() {
@@ -35,5 +34,5 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
 sealed class Content {
     object Loading : Content()
     object Error : Content()
-    data class Result(val items: List<FlexAdapter.Item>) : Content()
+    data class Result(val items: List<nl.bijdorpstudio.lib.flex.FlexAdapter.Item>) : Content()
 }
