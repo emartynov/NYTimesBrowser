@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import kotlin.properties.Delegates.observable
 
-open class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
+class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
 
     var items: List<Item> by observable(emptyList()) { _, oldItems, newItems ->
         onItemsChanged(
