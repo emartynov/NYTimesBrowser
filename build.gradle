@@ -32,9 +32,10 @@ allprojects {
             jvmTarget = '1.8'
             // treat all warnings as errors
             kotlinOptions.allWarningsAsErrors = true
+            // Inline classes
+            freeCompilerArgs = ['-XXLanguage:+InlineClasses']
         }
     }
-
 }
 
 task clean(type: Delete) {
