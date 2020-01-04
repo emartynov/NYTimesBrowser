@@ -5,11 +5,12 @@ Simple list/grid of the articles from [NY Times search API](https://developer.ny
 
 Use DDD for data modeling.
 
-Model:
-NonEmptyString - string that is not empty
-Article - NY Times article
-ID - some id in the system
-Url - path for some remote resource
+Models:
+* NonEmptyString - string that is not empty
+* ApiKey - string that not empty
+* Article - NY Times article [ID, title, date, url]
+* ID - some id in the system (non empty string)
+* Url - path for some remote resource (non empty string that pass parsing by Uri class)
 
 ## Setup
 
@@ -17,6 +18,7 @@ Url - path for some remote resource
 * `common-article` - common library to handle classes and functionality around articles
 * `common-article-search` - network library to search article 
 * `lib-retrofit` - network library to setup general code fr networking 
+* `feature-search` - android library that contains UI to do articles search
 
 # Dependencies
 * Use java8 source and target level
@@ -32,7 +34,6 @@ Url - path for some remote resource
 * Latest AGP 3.6.0-rc01
 
 # Known issues
-* Domain modules have copy constructor that allows private data change
 * No tests for interceptor (too much mocking for the late night)
 * No test for retrofit setup (I probably can but should it be unit test)
 
