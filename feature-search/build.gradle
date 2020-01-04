@@ -8,8 +8,10 @@ dependencies {
 
     implementation libraries.androidXConstraintLayout
     implementation libraries.androidXRecyclerView
+    implementation libraries.appCompat
 
     implementation libraries.kotlinStdlib
+    implementation libraries.picasso
     implementation libraries.retrofit
     implementation libraries.rxAndroid
     implementation libraries.rxKotlin

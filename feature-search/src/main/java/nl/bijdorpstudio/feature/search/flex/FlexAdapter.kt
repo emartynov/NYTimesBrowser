@@ -7,6 +7,7 @@ import androidx.annotation.LayoutRes
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.squareup.picasso.Picasso
 import kotlin.properties.Delegates.observable
 
 class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
@@ -46,7 +47,7 @@ class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
 
     override fun onBindViewHolder(holder: FlexViewHolder, position: Int) {
         val item = items[position]
-        item.onBind(holder.itemView as ViewGroup)
+        item.onBind(holder.itemView as ViewGroup, Picasso.get())
     }
 
     class FlexViewHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -55,7 +56,7 @@ class FlexAdapter : Adapter<FlexAdapter.FlexViewHolder>() {
         @get:LayoutRes val layout: Int
     ) {
 
-        open fun onBind(@Suppress("UNUSED_PARAMETER") viewGroup: ViewGroup) {
+        open fun onBind(@Suppress("UNUSED_PARAMETER") viewGroup: ViewGroup, picasso: Picasso) {
             // Override to implement.
         }
 
