@@ -11,23 +11,41 @@ import nl.bijdorpstudio.common.search.ArticleSearchClient
 // TODO: Tests
 class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewModel() {
     private val mutableContentData = MutableLiveData<Content>()
-    val contentDate: LiveData<Content> = mutableContentData
+    val contentData: LiveData<Content> = mutableContentData
+
+    private val loadedItems = mutableListOf<ArticleListFlexItem>()
+
+    private var page = 0
 
     fun refresh() {
+        page = 0
+        loadedItems.clear()
+
         mutableContentData.value = Content.Loading
 
-        searchClient.searchArticle()
+        loadPageItems()
+    }
+
+    private fun loadPageItems() {
+        searchClient.searchArticle(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = { list ->
                     val items = list.map { ArticleListFlexItem(it) }
-                    mutableContentData.value = Content.Result(items)
+                    loadedItems += items
+                    mutableContentData.value = Content.Result(loadedItems.toMutableList())
                 },
                 onError = {
                     mutableContentData.value = Content.Error
                 }
             ).addTo(compositeDisposable)
+    }
+
+    fun loadNext() {
+        page += 1
+
+        loadPageItems()
     }
 }
 

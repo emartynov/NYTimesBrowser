@@ -28,7 +28,7 @@ class SearchActivity : AppCompatActivity() {
             SearchViewModelFactory()
         ).get(SearchViewModel::class.java)
 
-        model.contentDate.observe(
+        model.contentData.observe(
             this,
             Observer {
                 val progressView = findViewById<ContentLoadingProgressBar>(R.id.progress_bar)
@@ -50,6 +50,9 @@ class SearchActivity : AppCompatActivity() {
                 }
             }
         )
+
+        val listener = PaginationScrollListener(recyclerView, model::loadNext)
+        recyclerView.addOnScrollListener(listener)
 
         if (savedInstanceState == null) {
             model.refresh()
