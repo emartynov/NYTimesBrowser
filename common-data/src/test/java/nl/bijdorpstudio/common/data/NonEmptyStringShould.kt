@@ -1,4 +1,4 @@
-package nl.bijdorpstudio.common.article
+package nl.bijdorpstudio.common.data
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test

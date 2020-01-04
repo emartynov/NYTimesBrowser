@@ -1,4 +1,4 @@
-package nl.bijdorpstudio.common.article
+package nl.bijdorpstudio.common.data
 
 import java.net.URI
 

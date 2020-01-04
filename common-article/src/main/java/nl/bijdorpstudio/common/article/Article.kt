@@ -1,5 +1,7 @@
 package nl.bijdorpstudio.common.article
 
+import nl.bijdorpstudio.common.data.NonEmptyString
+import nl.bijdorpstudio.common.data.Url
 import org.threeten.bp.LocalDateTime
 
 data class Article(
