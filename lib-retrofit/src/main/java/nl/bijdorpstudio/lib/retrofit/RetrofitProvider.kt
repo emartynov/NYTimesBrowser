@@ -8,10 +8,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.net.URL
 
 class RetrofitProvider(
-    private val apiKeyAppendInterceptor: ApiKeyAppendInterceptor,
-    private val isDebug: Boolean
+    private val apiKeyAppendInterceptor: ApiKeyAppendInterceptor
 ) {
-    fun createRetrofit(baseUrl: URL): Retrofit {
+    fun createRetrofit(baseUrl: URL, isDebug: Boolean): Retrofit {
         var clientBuilder = OkHttpClient.Builder()
             .addInterceptor(apiKeyAppendInterceptor)
 

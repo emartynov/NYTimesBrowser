@@ -63,8 +63,8 @@ internal class SearchViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         val apiKey = ApiKey.of("***REMOVED***") as ApiKey
         val baseUrl = URL("https://api.nytimes.com/")
-        val provider = RetrofitProvider(ApiKeyAppendInterceptor(apiKey), BuildConfig.DEBUG)
-        val retrofit = provider.createRetrofit(baseUrl)
+        val provider = RetrofitProvider(ApiKeyAppendInterceptor(apiKey))
+        val retrofit = provider.createRetrofit(baseUrl, BuildConfig.DEBUG)
         @Suppress("UNCHECKED_CAST")
         return SearchViewModel(ArticleSearchClientImpl(retrofit)) as T
     }
