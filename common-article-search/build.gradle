@@ -4,6 +4,7 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     implementation project(':common-article')
+    implementation project(':common-data')
 
     implementation libraries.moshi
     implementation libraries.retrofit

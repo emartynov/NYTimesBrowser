@@ -3,9 +3,9 @@ apply from: "$rootDir/android-library.gradle"
 dependencies {
     implementation project(':common-article')
     implementation project(':common-article-search')
+    implementation project(':common-data')
     implementation project(':lib-retrofit')
 
-    implementation libraries.appCompat
     implementation libraries.androidXConstraintLayout
     implementation libraries.androidXRecyclerView
 

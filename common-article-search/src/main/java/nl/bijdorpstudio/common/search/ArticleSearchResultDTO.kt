@@ -4,8 +4,8 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import nl.bijdorpstudio.common.article.Article
 import nl.bijdorpstudio.common.article.ID
-import nl.bijdorpstudio.common.article.NonEmptyString
-import nl.bijdorpstudio.common.article.Url
+import nl.bijdorpstudio.common.data.NonEmptyString
+import nl.bijdorpstudio.common.data.Url
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 
