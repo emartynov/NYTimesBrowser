@@ -9,6 +9,7 @@ import io.reactivex.schedulers.Schedulers
 import nl.bijdorpstudio.common.search.ArticleSearchClient
 import nl.bijdorpstudio.feature.search.flex.FlexAdapter
 
+// TODO: Tests
 class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewModel() {
     private val mutableContentData = MutableLiveData<Content>()
     val contentDate: LiveData<Content> = mutableContentData

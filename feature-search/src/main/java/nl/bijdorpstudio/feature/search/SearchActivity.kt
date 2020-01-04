@@ -57,6 +57,7 @@ class SearchActivity : AppCompatActivity() {
     }
 }
 
+//TODO: DI
 internal class SearchViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         val apiKey = ApiKey.of("***REMOVED***") as ApiKey

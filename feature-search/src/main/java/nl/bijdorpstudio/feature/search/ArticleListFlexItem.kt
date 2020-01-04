@@ -5,6 +5,7 @@ import android.widget.TextView
 import nl.bijdorpstudio.common.article.Article
 import nl.bijdorpstudio.feature.search.flex.FlexAdapter
 
+// TODO: test
 class ArticleListFlexItem(private val article: Article) :
     FlexAdapter.Item(R.layout.article_list_item) {
 
