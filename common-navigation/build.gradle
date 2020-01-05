@@ -1,0 +1,5 @@
+apply from: "$rootDir/library.gradle"
+
+dependencies {
+    implementation project (':common-article')
+}
