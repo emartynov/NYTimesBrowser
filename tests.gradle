@@ -8,12 +8,11 @@ dependencies {
 
     testImplementation testLibraries.assertJ
 
-    testImplementation testLibraries.assertJ
-    testImplementation testLibraries.assertJ
-    testImplementation testLibraries.assertJ
-    testImplementation testLibraries.assertJ
-
     testImplementation testLibraries.mockitoCore
     testImplementation testLibraries.mockitoExtension
     testImplementation testLibraries.mockitoKotlin
+}
+
+test {
+    useJUnitPlatform {}
 }
