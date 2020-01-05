@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="article_image">Article image</string>
+    <string name="search_here">Search here</string>
 </resources>
