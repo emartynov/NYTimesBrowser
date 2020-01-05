@@ -37,6 +37,8 @@ android {
 }
 
 dependencies {
+    implementation project(':common-navigation')
+    implementation project(':common-article')
     implementation project(':feature-search')
 
     implementation libraries.threeTenABP
