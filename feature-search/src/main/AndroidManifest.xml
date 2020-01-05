@@ -2,6 +2,8 @@
     package="nl.bijdorpstudio.feature.search">
 
     <application>
-        <activity android:name=".SearchActivity" />
+        <activity
+            android:name=".SearchActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" />
     </application>
 </manifest>

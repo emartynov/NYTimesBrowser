@@ -13,6 +13,7 @@ ext.versions = [
         androidX                : '1.1.0',
         androidXConstraintLayout: '2.0.0-beta4',
         androidXRecycleView     : '1.1.0',
+        androidMaterial         : '1.0.0',
         moshi                   : '1.9.2',
         picasso                 : '2.71828',
         retrofit                : '2.6.3',
@@ -35,9 +36,10 @@ ext.gradlePlugins = [
 ]
 
 ext.libraries = [
-        appCompat               : "androidx.appcompat:appcompat:$versions.androidX",
+        androidMaterial         : "com.google.android.material:material:$versions.androidMaterial",
         androidXConstraintLayout: "androidx.constraintlayout:constraintlayout:$versions.androidXConstraintLayout",
         androidXRecyclerView    : "androidx.recyclerview:recyclerview:$versions.androidXRecycleView",
+        appCompat               : "androidx.appcompat:appcompat:$versions.androidX",
         kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
         moshi                   : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
         moshiCodegen            : "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",

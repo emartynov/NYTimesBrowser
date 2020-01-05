@@ -8,6 +8,7 @@ dependencies {
     implementation project(':lib-flex')
     implementation project(':lib-retrofit')
 
+    implementation libraries.androidMaterial
     implementation libraries.androidXConstraintLayout
     implementation libraries.androidXRecyclerView
     implementation libraries.appCompat
