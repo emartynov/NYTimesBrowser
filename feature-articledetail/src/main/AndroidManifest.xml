@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="nl.bijdorpstudio.feature.articledetail">
+
+    <application>
+        <activity
+            android:name=".ArticleDetailActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+    </application>
+
+</manifest>

@@ -1,0 +1,15 @@
+apply from: "$rootDir/android-library.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+dependencies {
+    implementation project(':common-article')
+    implementation project(':common-data')
+
+    implementation libraries.appCompat
+    implementation libraries.androidMaterial
+
+    implementation libraries.kotlinStdlib
+    implementation libraries.picasso
+    implementation libraries.threeTenABP
+}

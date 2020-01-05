@@ -1,10 +1,11 @@
-rootProject.name='NYTimesBrowser'
+rootProject.name = 'NYTimesBrowser'
 
 include ':app'
 include ':common-article'
 include ':common-article-search'
 include ':common-data'
 include ':common-navigation'
+include ':feature-articledetail'
 include ':feature-search'
 include ':lib-flex'
 include ':lib-retrofit'
