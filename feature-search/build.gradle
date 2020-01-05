@@ -4,6 +4,7 @@ dependencies {
     implementation project(':common-article')
     implementation project(':common-article-search')
     implementation project(':common-data')
+    implementation project(':common-navigation')
     implementation project(':lib-flex')
     implementation project(':lib-retrofit')
 

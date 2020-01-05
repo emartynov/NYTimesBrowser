@@ -6,10 +6,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
+import nl.bijdorpstudio.common.navigation.Navigator
 import nl.bijdorpstudio.common.search.ArticleSearchClient
 
 // TODO: Tests
-class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewModel() {
+class SearchViewModel(
+    private val searchClient: ArticleSearchClient,
+    private val navigator: Navigator
+) : RxViewModel() {
     private val mutableContentData = MutableLiveData<Content>()
     val contentData: LiveData<Content> = mutableContentData
 
@@ -34,7 +38,7 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = { list ->
-                    val items = list.map { ArticleListFlexItem(it) }
+                    val items = list.map { ArticleListFlexItem(it, navigator::showArticleDetail) }
                     loadedItems += items
                     mutableContentData.value = Content.Result(loadedItems.toMutableList())
                 },

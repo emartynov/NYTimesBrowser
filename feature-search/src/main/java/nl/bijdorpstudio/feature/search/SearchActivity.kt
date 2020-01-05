@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import nl.bijdorpstudio.common.data.Url
+import nl.bijdorpstudio.common.navigation.Navigator
+import nl.bijdorpstudio.common.navigation.NavigatorProvider
 import nl.bijdorpstudio.common.search.ArticleSearchClientImpl
 import nl.bijdorpstudio.lib.flex.FlexRecyclerView
 import nl.bijdorpstudio.lib.retrofit.ApiKey
@@ -30,7 +32,7 @@ class SearchActivity : AppCompatActivity() {
 
         val model = ViewModelProvider(
             this as ViewModelStoreOwner,
-            SearchViewModelFactory()
+            SearchViewModelFactory((applicationContext as NavigatorProvider).navigator)
         ).get(SearchViewModel::class.java)
 
         model.contentData.observe(
@@ -80,13 +82,14 @@ class SearchActivity : AppCompatActivity() {
 }
 
 //TODO: DI
-internal class SearchViewModelFactory : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+internal class SearchViewModelFactory(private val navigator: Navigator) :
+    ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
         val apiKey = ApiKey.of("***REMOVED***")!!
-        val baseUrl = Url.of("https://api.nytimes.com/")!!
         val provider = RetrofitProvider(ApiKeyAppendInterceptor(apiKey))
+        val baseUrl = Url.of("https://api.nytimes.com/")!!
         val retrofit = provider.createRetrofit(baseUrl, BuildConfig.DEBUG)
         @Suppress("UNCHECKED_CAST")
-        return SearchViewModel(ArticleSearchClientImpl(retrofit)) as T
+        return SearchViewModel(ArticleSearchClientImpl(retrofit), navigator) as T
     }
 }

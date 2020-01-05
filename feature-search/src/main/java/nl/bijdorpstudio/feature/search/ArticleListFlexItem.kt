@@ -10,7 +10,10 @@ import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
 // TODO: test
-class ArticleListFlexItem(private val article: Article) :
+class ArticleListFlexItem(
+    private val article: Article,
+    private val onClick: (Article) -> Unit
+) :
     FlexAdapter.Item(R.layout.article_list_item) {
 
     private val dateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)
@@ -35,6 +38,10 @@ class ArticleListFlexItem(private val article: Article) :
         } else {
             picasso.cancelRequest(imageView)
             imageView.setImageResource(galleryThumb)
+        }
+
+        viewGroup.setOnClickListener {
+            onClick.invoke(article)
         }
     }
 
