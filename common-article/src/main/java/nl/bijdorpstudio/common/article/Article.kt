@@ -8,6 +8,8 @@ data class Article(
     val id: ID,
     val title: NonEmptyString,
     val dateTime: LocalDateTime,
+    val mainParagraph: NonEmptyString,
+    val webUrl: Url,
     val imageUrl: Url?
 )
 
@@ -15,5 +17,7 @@ val EMPTY_ARTICLE = Article(
     id = ID.of("empty")!!,
     title = NonEmptyString.of("No title")!!,
     dateTime = LocalDateTime.now(),
+    mainParagraph = NonEmptyString.of("No text")!!,
+    webUrl = Url.of("https://google.com")!!,
     imageUrl = null
 )

@@ -24,6 +24,8 @@ internal data class ArticleDTO(
     @Json(name = "_id") val id: String,
     @Json(name = "pub_date") val date: String,
     val headline: HeadlineDTO,
+    @Json(name = "lead_paragraph") val mainParagraph: String,
+    @Json(name = "web_url") val url: String,
     val multimedia: List<MultimediaDTO>
 )
 
@@ -49,6 +51,8 @@ internal fun ArticleDTO.toDomain(): Article {
             date,
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
         ),
+        mainParagraph = NonEmptyString.of(mainParagraph)!!,
+        webUrl = Url.of(url)!!,
         imageUrl = if (slideImageMultimedia?.url != null) Url.of(slideImageMultimedia.url) else null
     )
 }

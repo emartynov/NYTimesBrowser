@@ -34,7 +34,9 @@ class ArticleSearchClientImplShould {
                     subtype = "slide",
                     url = "images/2019/12/18/slide.jpg"
                 )
-            )
+            ),
+            url = "http://google.com",
+            mainParagraph = "Main paragraph"
         )
         whenever(retrofitMock.create(ArticleSearch::class.java)) doReturn searchMock
         val articleSearchResultDTO = ArticleSearchResultDTO(ArticleSearchResponseDTO(listOf(dto)))
