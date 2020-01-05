@@ -22,7 +22,7 @@ class ArticleListFlexItem(
     override fun onBind(viewGroup: ViewGroup, picasso: Picasso) {
         viewGroup.findViewById<TextView>(R.id.article_title).text = article.title.value
         viewGroup.findViewById<TextView>(R.id.article_date).text =
-            article.date.format(dateTimeFormatter)
+            article.dateTime.format(dateTimeFormatter)
 
         val imageUrl = article.imageUrl
         val imageView = viewGroup.findViewById<ImageView>(R.id.article_image)

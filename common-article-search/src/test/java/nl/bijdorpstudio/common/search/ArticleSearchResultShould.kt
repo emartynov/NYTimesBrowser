@@ -69,7 +69,7 @@ class ArticleSearchResultShould {
         val article = dto.toDomain()
 
         assertThat(article.title.value).isEqualTo(dto.headline.main)
-        assertThat(article.date).isEqualTo(LocalDateTime.of(2019, 12, 18, 0, 0, 0))
+        assertThat(article.dateTime).isEqualTo(LocalDateTime.of(2019, 12, 18, 0, 0, 0))
         assertThat(article.id.value.value).isEqualTo("some id")
         assertThat(article.imageUrl!!.value.value).isEqualTo("images/2019/12/18/slide.jpg")
     }

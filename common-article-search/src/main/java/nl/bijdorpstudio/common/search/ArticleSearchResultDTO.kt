@@ -45,7 +45,7 @@ internal fun ArticleDTO.toDomain(): Article {
     return Article(
         id = ID.of(this.id)!!,
         title = NonEmptyString.of(headline.main)!!,
-        date = LocalDateTime.parse(
+        dateTime = LocalDateTime.parse(
             date,
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssZ")
         ),

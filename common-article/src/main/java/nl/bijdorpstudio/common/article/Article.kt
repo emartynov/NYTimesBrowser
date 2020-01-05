@@ -7,6 +7,6 @@ import org.threeten.bp.LocalDateTime
 data class Article(
     val id: ID,
     val title: NonEmptyString,
-    val date: LocalDateTime,
+    val dateTime: LocalDateTime,
     val imageUrl: Url?
 )
