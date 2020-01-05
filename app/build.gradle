@@ -40,6 +40,7 @@ dependencies {
     implementation project(':common-navigation')
     implementation project(':common-article')
     implementation project(':feature-search')
+    implementation project(':feature-articledetail')
 
     implementation libraries.threeTenABP
 }

@@ -10,3 +10,10 @@ data class Article(
     val dateTime: LocalDateTime,
     val imageUrl: Url?
 )
+
+val EMPTY_ARTICLE = Article(
+    id = ID.of("empty")!!,
+    title = NonEmptyString.of("No title")!!,
+    dateTime = LocalDateTime.now(),
+    imageUrl = null
+)
