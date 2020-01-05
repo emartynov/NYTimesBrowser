@@ -6,5 +6,8 @@ import retrofit2.http.Query
 
 internal interface ArticleSearch {
     @GET("svc/search/v2/articlesearch.json")
-    fun searchArticles(@Query("page") page: Int): Single<ArticleSearchResultDTO>
+    fun searchArticles(
+        @Query("q") query: String,
+        @Query("page") page: Int
+    ): Single<ArticleSearchResultDTO>
 }

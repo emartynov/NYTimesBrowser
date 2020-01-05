@@ -38,9 +38,9 @@ class ArticleSearchClientImplShould {
         )
         whenever(retrofitMock.create(ArticleSearch::class.java)) doReturn searchMock
         val articleSearchResultDTO = ArticleSearchResultDTO(ArticleSearchResponseDTO(listOf(dto)))
-        whenever(searchMock.searchArticles(0)) doReturn Single.just(articleSearchResultDTO)
+        whenever(searchMock.searchArticles("", 0)) doReturn Single.just(articleSearchResultDTO)
 
-        val articles = client.searchArticle(0).blockingGet()
+        val articles = client.searchArticle("", 0).blockingGet()
 
         assertThat(articles).hasSize(1)
         assertThat(articles[0]).isEqualTo(dto.toDomain())
