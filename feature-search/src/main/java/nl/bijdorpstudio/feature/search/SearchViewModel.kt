@@ -16,10 +16,12 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
     private val loadedItems = mutableListOf<ArticleListFlexItem>()
 
     private var page = 0
+    private var query = ""
 
     fun refresh() {
         page = 0
         loadedItems.clear()
+        compositeDisposable.clear()
 
         mutableContentData.value = Content.Loading
 
@@ -27,7 +29,7 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
     }
 
     private fun loadPageItems() {
-        searchClient.searchArticle(page)
+        searchClient.searchArticle(query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -46,6 +48,13 @@ class SearchViewModel(private val searchClient: ArticleSearchClient) : RxViewMod
         page += 1
 
         loadPageItems()
+    }
+
+    fun search(query: String) {
+        if (this.query != query) {
+            this.query = query
+            refresh()
+        }
     }
 }
 

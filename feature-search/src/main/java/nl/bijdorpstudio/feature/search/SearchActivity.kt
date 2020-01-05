@@ -3,6 +3,8 @@ package nl.bijdorpstudio.feature.search
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
+import androidx.constraintlayout.widget.Group
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -21,7 +23,10 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val contentViews = findViewById<Group>(R.id.content_views)
+
         val recyclerView = findViewById<FlexRecyclerView>(R.id.recycler_view)
+        val searchView = findViewById<SearchView>(R.id.search_view)
 
         val model = ViewModelProvider(
             this as ViewModelStoreOwner,
@@ -36,7 +41,7 @@ class SearchActivity : AppCompatActivity() {
                 when (it) {
                     is Content.Result -> {
                         progressView.hide()
-                        recyclerView.visibility = View.VISIBLE
+                        contentViews.visibility = View.VISIBLE
 
                         recyclerView.setItems(it.items)
                     }
@@ -45,7 +50,7 @@ class SearchActivity : AppCompatActivity() {
                     }
                     is Content.Loading -> {
                         progressView.show()
-                        recyclerView.visibility = View.GONE
+                        contentViews.visibility = View.GONE
                     }
                 }
             }
@@ -53,6 +58,20 @@ class SearchActivity : AppCompatActivity() {
 
         val listener = PaginationScrollListener(recyclerView, model::loadNext)
         recyclerView.addOnScrollListener(listener)
+
+        searchView.setOnQueryTextListener(
+            object : SearchViewTextListenerAdapter() {
+                override fun onQueryTextSubmit(query: String): Boolean {
+                    model.search(query)
+                    return true
+                }
+            }
+        )
+
+        searchView.setOnCloseListener {
+            model.search("")
+            false
+        }
 
         if (savedInstanceState == null) {
             model.refresh()
