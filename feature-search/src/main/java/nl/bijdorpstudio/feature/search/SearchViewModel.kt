@@ -9,7 +9,6 @@ import io.reactivex.schedulers.Schedulers
 import nl.bijdorpstudio.common.navigation.Navigator
 import nl.bijdorpstudio.common.search.ArticleSearchClient
 
-// TODO: Tests
 class SearchViewModel(
     private val searchClient: ArticleSearchClient,
     private val navigator: Navigator

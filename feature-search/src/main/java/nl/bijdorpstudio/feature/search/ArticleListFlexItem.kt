@@ -9,7 +9,6 @@ import nl.bijdorpstudio.lib.flex.FlexAdapter
 import org.threeten.bp.format.DateTimeFormatter
 import org.threeten.bp.format.FormatStyle
 
-// TODO: test
 class ArticleListFlexItem(
     private val article: Article,
     private val onClick: (Article) -> Unit

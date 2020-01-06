@@ -3,7 +3,6 @@ package nl.bijdorpstudio.feature.search
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-// TODO: test
 class PaginationScrollListener(
     recyclerView: RecyclerView,
     private val onReachingEnd: () -> Unit,

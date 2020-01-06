@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.DiffUtil
 /**
  * DiffUtil callback for FlexAdapter. Delegates the "sameness" checks to the FlexAdapter items for maximum flexibility.
  */
-// TODO: tests
 class FlexDiffUtilCallback(
     private val oldItems: List<FlexAdapter.Item>,
     private val newItems: List<FlexAdapter.Item>
