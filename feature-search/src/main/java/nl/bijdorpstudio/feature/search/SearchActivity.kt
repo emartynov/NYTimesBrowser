@@ -1,10 +1,8 @@
 package nl.bijdorpstudio.feature.search
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.constraintlayout.widget.Group
 import androidx.core.widget.ContentLoadingProgressBar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -23,8 +21,6 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val contentViews = findViewById<Group>(R.id.content_views)
-
         val recyclerView = findViewById<FlexRecyclerView>(R.id.recycler_view)
         val searchView = findViewById<SearchView>(R.id.search_view)
 
@@ -41,8 +37,6 @@ class SearchActivity : AppCompatActivity() {
                 when (it) {
                     is Content.Result -> {
                         progressView.hide()
-                        contentViews.visibility = View.VISIBLE
-
                         recyclerView.setItems(it.items)
                     }
                     is Content.Error -> {
@@ -50,7 +44,6 @@ class SearchActivity : AppCompatActivity() {
                     }
                     is Content.Loading -> {
                         progressView.show()
-                        contentViews.visibility = View.GONE
                     }
                 }
             }

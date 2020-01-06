@@ -18,9 +18,9 @@
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:indeterminateTint="@android:color/black"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -36,11 +36,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_view" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/content_views"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:constraint_referenced_ids="recycler_view,search_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
