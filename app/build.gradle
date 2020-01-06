@@ -41,6 +41,7 @@ dependencies {
     implementation project(':common-article')
     implementation project(':feature-search')
     implementation project(':feature-article-detail')
+    implementation project(':lib-retrofit')
 
     implementation libraries.threeTenABP
 }

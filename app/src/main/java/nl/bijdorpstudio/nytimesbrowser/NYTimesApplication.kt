@@ -2,14 +2,15 @@ package nl.bijdorpstudio.nytimesbrowser
 
 import android.app.Application
 import com.jakewharton.threetenabp.AndroidThreeTen
-import nl.bijdorpstudio.common.navigation.Navigator
-import nl.bijdorpstudio.common.navigation.NavigatorProvider
+import nl.bijdorpstudio.feature.search.DI
+import nl.bijdorpstudio.lib.retrofit.ApiKey
 
-class NYTimesApplication : Application(), NavigatorProvider {
-    override val navigator: Navigator = NavigatorImpl(this)
-
+class NYTimesApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         AndroidThreeTen.init(this)
+
+        DI.navigator = NavigatorImpl(this)
+        DI.apiKey = ApiKey.of("***REMOVED***")
     }
 }
