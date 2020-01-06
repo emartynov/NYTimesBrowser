@@ -22,22 +22,23 @@ class SearchViewModel(
     private var page = 0
     private var query = ""
 
-    fun refresh() {
+    fun refresh(query: String = "") {
         page = 0
         loadedItems.clear()
         compositeDisposable.clear()
 
         mutableContentData.value = Content.Loading
 
-        loadPageItems()
+        loadPageItems(query)
     }
 
-    private fun loadPageItems() {
+    private fun loadPageItems(query: String) {
         searchClient.searchArticle(query, page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onSuccess = { list ->
+                    this.query = query
                     val items = list.map { ArticleListFlexItem(it, navigator::showArticleDetail) }
                     loadedItems += items
                     mutableContentData.value = Content.Result(loadedItems.toMutableList())
@@ -51,13 +52,12 @@ class SearchViewModel(
     fun loadNext() {
         page += 1
 
-        loadPageItems()
+        loadPageItems(query)
     }
 
     fun search(query: String) {
         if (this.query != query) {
-            this.query = query
-            refresh()
+            refresh(query)
         }
     }
 }
