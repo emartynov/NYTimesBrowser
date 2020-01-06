@@ -53,7 +53,6 @@ class PaginationScrollListener(
         /**
          * The number of items which can be between the last item before more data is requested.
          */
-        //TODO: rethink number of items
-        private const val ITEM_OFFSET = 10
+        private const val ITEM_OFFSET = 5
     }
 }
