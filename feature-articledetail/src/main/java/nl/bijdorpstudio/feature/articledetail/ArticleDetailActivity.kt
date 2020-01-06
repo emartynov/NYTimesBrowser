@@ -1,46 +1,51 @@
 package nl.bijdorpstudio.feature.articledetail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.squareup.picasso.Picasso
 
 
 class ArticleDetailActivity : AppCompatActivity() {
-
-    private var showMenu = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        val toolbar = findViewById<Toolbar>(R.id.collapsing_toolbar)
-        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        val fab = findViewById<FloatingActionButton>(R.id.fab)
-        fab.setOnClickListener { }
+        bindView()
+    }
 
-        val appBarLayout = findViewById<AppBarLayout>(R.id.appbar_layout)
-        appBarLayout.addOnOffsetChangedListener(
-            object : AppBarLayout.OnOffsetChangedListener {
-                var scrollRange = -1
-                override fun onOffsetChanged(appBarLayout: AppBarLayout, verticalOffset: Int) {
-                    if (scrollRange == -1) {
-                        scrollRange = appBarLayout.totalScrollRange
-                    }
-                    if (scrollRange + verticalOffset == 0) {
-                        showMenu = true
-                        invalidateOptionsMenu()
-                    } else if (showMenu) {
-                        showMenu = false
-                        invalidateOptionsMenu()
-                    }
-                }
-            }
-        )
+    private fun bindView() {
+        val article = DI.article
+
+        supportActionBar?.title = article.title.value
+
+        val imageUrl = article.imageUrl
+        if (imageUrl != null) {
+            val imageView = findViewById<ImageView>(R.id.article_image)
+
+            Picasso.get()
+                .load("https://static01.nyt.com/${imageUrl.value.value}")
+                .into(imageView)
+        }
+
+        findViewById<TextView>(R.id.article_paragraph).text = article.mainParagraph.value
+        findViewById<TextView>(R.id.article_title).text = article.title.value
+
+        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            val openURLIntent = Intent(Intent.ACTION_VIEW)
+            openURLIntent.data = Uri.parse(article.webUrl.value.value)
+            startActivity(openURLIntent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -48,17 +53,24 @@ class ArticleDetailActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        val item = menu.findItem(R.id.action_send)
-        item.isVisible = showMenu
-        return super.onPrepareOptionsMenu(menu)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.action_send) {
-            return true
+        when (item.itemId) {
+            R.id.action_send -> {
+                shareArticleUrl()
+                return true
+            }
+            android.R.id.home -> {
+                finish()
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun shareArticleUrl() {
+        val sharingIntent = Intent(Intent.ACTION_SEND)
+        sharingIntent.type = "text/plain"
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, DI.article.webUrl.value.value)
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.share)))
     }
 }

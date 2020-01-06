@@ -5,7 +5,7 @@
     <application>
         <activity
             android:name=".ArticleDetailActivity"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.Light.DarkActionBar" />
     </application>
 
 </manifest>

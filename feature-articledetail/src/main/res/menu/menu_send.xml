@@ -8,6 +8,6 @@
         android:icon="@android:drawable/ic_dialog_email"
         android:orderInCategory="200"
         android:title="@string/share"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
 </menu>

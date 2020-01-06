@@ -1,4 +1,5 @@
 <resources>
     <string name="share">Share</string>
     <string name="article_image">Article image</string>
+    <string name="open_article">Open article</string>
 </resources>

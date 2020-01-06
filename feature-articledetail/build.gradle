@@ -6,8 +6,9 @@ dependencies {
     implementation project(':common-article')
     implementation project(':common-data')
 
-    implementation libraries.appCompat
     implementation libraries.androidMaterial
+    implementation libraries.androidXConstraintLayout
+    implementation libraries.appCompat
 
     implementation libraries.kotlinStdlib
     implementation libraries.picasso
