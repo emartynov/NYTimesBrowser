@@ -2,4 +2,7 @@
 <resources>
     <string name="article_image">Article image</string>
     <string name="search_here">Search here</string>
+    <string name="error_title">Oh!</string>
+    <string name="error_message">Unexpected error happened. Please try again.</string>
+    <string name="error_button">Yes, it happens</string>
 </resources>

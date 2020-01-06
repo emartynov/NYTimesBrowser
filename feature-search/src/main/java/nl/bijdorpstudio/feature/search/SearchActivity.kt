@@ -1,6 +1,7 @@
 package nl.bijdorpstudio.feature.search
 
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.widget.ContentLoadingProgressBar
@@ -23,6 +24,7 @@ class SearchActivity : AppCompatActivity() {
 
         val recyclerView = findViewById<FlexRecyclerView>(R.id.recycler_view)
         val searchView = findViewById<SearchView>(R.id.search_view)
+        val progressView = findViewById<ContentLoadingProgressBar>(R.id.progress_bar)
 
         val model = ViewModelProvider(
             this as ViewModelStoreOwner,
@@ -32,7 +34,6 @@ class SearchActivity : AppCompatActivity() {
         model.contentData.observe(
             this,
             Observer {
-                val progressView = findViewById<ContentLoadingProgressBar>(R.id.progress_bar)
 
                 when (it) {
                     is Content.Result -> {
@@ -41,6 +42,7 @@ class SearchActivity : AppCompatActivity() {
                     }
                     is Content.Error -> {
                         progressView.hide()
+                        showGenericError()
                     }
                     is Content.Loading -> {
                         progressView.show()
@@ -69,6 +71,14 @@ class SearchActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             model.refresh()
         }
+    }
+
+    private fun showGenericError() {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.error_title)
+            .setMessage(R.string.error_message)
+            .setPositiveButton(R.string.error_button, null)
+            .show()
     }
 }
 
