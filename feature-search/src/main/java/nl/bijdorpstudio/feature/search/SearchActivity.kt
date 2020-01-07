@@ -89,7 +89,8 @@ internal class SearchViewModelFactory(private val navigator: Navigator) :
         val provider = RetrofitProvider(ApiKeyAppendInterceptor(apiKey))
         val baseUrl = Url.of("https://api.nytimes.com/")!!
         val retrofit = provider.createRetrofit(baseUrl, BuildConfig.DEBUG)
-        val repository = ArticleRepository(ArticleSearchClientImpl(retrofit))
+        val favouriteStorage = FavouriteStorage()
+        val repository = ArticleRepository(ArticleSearchClientImpl(retrofit), favouriteStorage)
         @Suppress("UNCHECKED_CAST")
         return SearchViewModel(repository, navigator) as T
     }
