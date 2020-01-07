@@ -17,6 +17,17 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@android:drawable/gallery_thumb" />
 
+    <ImageView
+        android:id="@+id/favourite_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/star_big_on"
+        android:visibility="gone"
+        android:contentDescription="@string/is_favourite"
+        app:layout_constraintBottom_toBottomOf="@id/article_image"
+        app:layout_constraintEnd_toEndOf="@id/article_image"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/article_title"
         android:layout_width="0dp"

@@ -5,4 +5,5 @@
     <string name="error_title">Oh!</string>
     <string name="error_message">Unexpected error happened. Please try again.</string>
     <string name="error_button">Yes, it happens</string>
+    <string name="is_favourite" />
 </resources>

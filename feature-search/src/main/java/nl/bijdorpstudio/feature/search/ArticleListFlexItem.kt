@@ -1,5 +1,6 @@
 package nl.bijdorpstudio.feature.search
 
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -42,6 +43,9 @@ class ArticleListFlexItem(
         viewGroup.setOnClickListener {
             onClick.invoke(article)
         }
+
+        viewGroup.findViewById<View>(R.id.favourite_view).visibility =
+            if (article.isFavorite) View.VISIBLE else View.GONE
     }
 
     override fun isItemTheSame(that: FlexAdapter.Item): Boolean {
