@@ -10,7 +10,8 @@ data class Article(
     val dateTime: LocalDateTime,
     val mainParagraph: NonEmptyString,
     val webUrl: Url,
-    val imageUrl: Url?
+    val imageUrl: Url?,
+    val isFavorite: Boolean = false
 )
 
 val EMPTY_ARTICLE = Article(
