@@ -2,15 +2,12 @@ package nl.bijdorpstudio.feature.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.schedulers.Schedulers
 import nl.bijdorpstudio.common.navigation.Navigator
-import nl.bijdorpstudio.common.search.ArticleSearchClient
 
 class SearchViewModel(
-    private val searchClient: ArticleSearchClient,
+    private val articleRepository: ArticleRepository,
     private val navigator: Navigator
 ) : RxViewModel() {
     private val mutableContentData = MutableLiveData<Content>()
@@ -32,9 +29,7 @@ class SearchViewModel(
     }
 
     private fun loadPageItems(query: String) {
-        searchClient.searchArticle(query, page)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+        articleRepository.loadArticles(query, page)
             .subscribeBy(
                 onSuccess = { list ->
                     this.query = query
