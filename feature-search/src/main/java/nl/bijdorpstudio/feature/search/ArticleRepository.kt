@@ -23,4 +23,8 @@ class ArticleRepository(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun favourite(article: Article) {
+        favouriteStorage.storeFavorite(article.id)
+    }
 }

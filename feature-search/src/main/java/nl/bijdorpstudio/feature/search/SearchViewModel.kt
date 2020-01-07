@@ -33,7 +33,13 @@ class SearchViewModel(
             .subscribeBy(
                 onSuccess = { list ->
                     this.query = query
-                    val items = list.map { ArticleListFlexItem(it, navigator::showArticleDetail) }
+                    val items = list.map { article ->
+                        ArticleListFlexItem(
+                            article,
+                            navigator::showArticleDetail,
+                            articleRepository::favourite
+                        )
+                    }
                     loadedItems += items
                     mutableContentData.value = Content.Result(loadedItems.toMutableList())
                 },

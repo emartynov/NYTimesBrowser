@@ -12,7 +12,8 @@ import org.threeten.bp.format.FormatStyle
 
 class ArticleListFlexItem(
     private val article: Article,
-    private val onClick: (Article) -> Unit
+    private val onClick: (Article) -> Unit,
+    private val onLongClick: (Article) -> Unit
 ) :
     FlexAdapter.Item(R.layout.article_list_item) {
 
@@ -40,12 +41,17 @@ class ArticleListFlexItem(
             imageView.setImageResource(galleryThumb)
         }
 
+        viewGroup.findViewById<View>(R.id.favourite_view).visibility =
+            if (article.isFavorite) View.VISIBLE else View.GONE
+
         viewGroup.setOnClickListener {
             onClick.invoke(article)
         }
 
-        viewGroup.findViewById<View>(R.id.favourite_view).visibility =
-            if (article.isFavorite) View.VISIBLE else View.GONE
+        viewGroup.setOnLongClickListener {
+            onLongClick.invoke(article)
+            true
+        }
     }
 
     override fun isItemTheSame(that: FlexAdapter.Item): Boolean {
