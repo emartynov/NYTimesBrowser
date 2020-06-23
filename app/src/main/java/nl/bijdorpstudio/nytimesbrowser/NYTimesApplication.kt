@@ -11,6 +11,7 @@ class NYTimesApplication : Application() {
         AndroidThreeTen.init(this)
 
         DI.navigator = NavigatorImpl(this)
+        // FIXME: This is security violation and key should not be hardcoded in source
         DI.apiKey = ApiKey.of("***REMOVED***")
     }
 }
